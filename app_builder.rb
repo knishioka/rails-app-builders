@@ -33,7 +33,7 @@ class AppBuilder < Rails::AppBuilder
 
     git :init
     append_file ".gitignore", "config/database.yml"
-    run "cp config/database.yml config/example_database.yml"
+    run "cp config/database.yml config/database.example.yml"
     git add: ".", commit: "-m 'initial commit'"
   end
 end
