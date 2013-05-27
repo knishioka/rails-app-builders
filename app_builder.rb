@@ -4,6 +4,8 @@ class AppBuilder < Rails::AppBuilder
   end
 
   def test
+    @generator.gem 'thin', group: [:development]
+    @generator.gem 'quiet_assets', group: [:development]
     @generator.gem 'rspec-rails', group: [:test, :development]
     @generator.gem 'capybara', group: [:test, :development]
     @generator.gem 'factory_girl_rails', group: [:test, :development]
