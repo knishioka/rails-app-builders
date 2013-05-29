@@ -14,6 +14,9 @@ class AppBuilder < Rails::AppBuilder
     @generator.gem 'guard-bundler', group: [:test, :development]
     @generator.gem 'guard-rspec', group: [:test, :development]
     @generator.gem 'guard-spork', group: [:test, :development]
+    @generator.gem 'terminal-notifier-guard', group: [:development]
+    @generator.gem 'rb-fsevent', group: [:test]
+
     run 'bundle install'
     generate 'rspec:install'
     run 'spork --bootstrap'
@@ -29,9 +32,6 @@ class AppBuilder < Rails::AppBuilder
       route "root to: '#{name}\#index'"
       remove_file "public/index.html"
     end
-
-    @generator.gem 'terminal-notifier-guard', group: [:development]
-    @generator.gem 'rb-fsevent', group: [:test]
 
     git :init
     append_file ".gitignore", "config/database.yml"
